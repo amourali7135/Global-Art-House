@@ -1,0 +1,7 @@
+WATCH VIDEO!
+
+$('#like-icon-post-<%= @art.id.to_s %>').
+  html('<%= link_to "Loved", art_likes_path(@art), method: :post, remote: true, class: "core-sprite love hide-text" %>');
+$('#like-text-post-<%= @art.id.to_s %>').
+  html('<%= j render "arts/like_text", {likes: @part.likes} %>');
+console.log("delete like success");

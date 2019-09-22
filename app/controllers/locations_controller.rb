@@ -1,22 +1,14 @@
 class LocationsController < ApplicationController
   def index
-  end
-
-  def new
-  end
-
-  def create
+    @locations = Location.all
   end
 
   def show
+    @location = Location.find(params[:id])
   end
 
-  def update
-  end
+  private
 
-  def destroy
-  end
-
-  def edit
-  end
+  def location_params
+    params.require(:user).permit(:city, :country)
 end
