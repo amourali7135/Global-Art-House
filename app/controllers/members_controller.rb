@@ -1,5 +1,10 @@
 class MembersController < ApplicationController
   # Did I even need this?  Or is it all in the user?
+
+  def index
+    @members = Member.all
+  end
+
   def new
     @member = Member.new
   end
@@ -12,10 +17,6 @@ class MembersController < ApplicationController
     else
       render "new"
     end
-  end
-
-  def index
-    @members = Member.all
   end
 
   def show
@@ -44,8 +45,6 @@ class MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit( :first_name, :last_name, :email, :photo, :artist_name, :photo, :bio, :age, :birth_country, :languages_spoken, :instagram, :facebook, :website)
+    params.require(:member).permit( :first_name, :last_name, :email, :photo, :artist_name, :photo, :bio, :age, :birth_country, :languages_spoken, :instagram, :facebook, :website, :middle_name)
   end
-end
-
 end

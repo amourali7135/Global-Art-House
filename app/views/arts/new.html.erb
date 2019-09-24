@@ -1,2 +1,12 @@
-<h1>Arts#new</h1>
-<p>Find me in app/views/arts/new.html.erb</p>
+Fill in form, location/art/pics/etc.
+
+  <%= simple_form_for [@member, @art] do |f|%>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :photo %>
+  <%= f.input :completion_date %>
+  <%= f.input :inspiration %>
+  <%= f.input :available? %>
+  <%= f.input :price_cents %>
+  <%= f.button :submit, 'Submit', class: 'btn btn-primary'%>
+  <% end %>

@@ -94,11 +94,13 @@ Rails.application.routes.draw do
     # resources :comment, except: [:index]
     # resources :reactions, only: [:index, :new, :create]
   end
-  resources :arts,  only: [:show, :edit, :update, :destroy] do
+
+  resources :arts, only: [:show, :edit, :update, :destroy] do
     resources :comment #, except: [:index] #works?
     # resources :reactions, only: [:index, :new, :create, :destroy] #works?
     resources :likes, only: [:create, :destroy]
   end
+
   resources :follows, only: [:create, :destroy] #nested?
 
   # resources :descriptive_tags, only: [:index, :show] can use search isntead
@@ -108,6 +110,7 @@ Rails.application.routes.draw do
   resources :shopping_carts, only: [:show] do
     resources :orders, only: [:new, :create]
   end
+
   resources :orders, only: [:show] do
     resources :payments, only: [:new, :create]
   end
@@ -120,4 +123,5 @@ Rails.application.routes.draw do
   get 'explore', to: 'pages#explore', as: 'explore'
   get "help", to: "pages#help", as: 'help'
   get 'contact', to: 'pages#contact', as: 'contact'
+  get 'dashboard', to: 'pages#dashboard', as: 'dashboard'
 end

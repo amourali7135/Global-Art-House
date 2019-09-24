@@ -2,29 +2,21 @@ class ArtsController < ApplicationController
   def index
     @arts = Art.all
   end
-  #   def index
-  #   if !logged_in?
-  #     @posts = Post.all.order('created_at DESC').take(10)
-  #   else
-  #     @posts = Post.posts_of_followings(current_user.following)
-  #     @posts = @posts.concat(current_user.posts)
-  #     @posts = @posts.sort_by(&:'created_at')
-  #     @posts = @posts.reverse.take(10)
-  #   end
-  # end
+
 
   def new
+    @member = Member.find(params[:member_id])
     @art = Art.new
   end
 
   def create
-    @art = Art.new
+    @art = Art.new(art_params)
     @member = Member.find(params[:member_id])
     @art.member = @art
     if @art.save
-      redirect_to member_arts_path(@member, @art)
+      redirect_to @art.member
     else
-      render :def new
+      render "new"
     end
   end
 
